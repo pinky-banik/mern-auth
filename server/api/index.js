@@ -3,9 +3,11 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 
 import userRoutes from './routes/userRoute.js';
+import authRoutes from './routes/authRoute.js';
 
 dotenv.config()
-mongoose.connect(process.env.MONGO)
+
+mongoose.connect('mongodb+srv://auth-app:5737AAgZSGk4E9ly@auth-app.golktir.mongodb.net/auth-app?retryWrites=true&w=majority')
     .then(() => {
     console.log("connected to database");
       })
@@ -15,9 +17,12 @@ mongoose.connect(process.env.MONGO)
 
 const app = express();
 
+app.use(express.json());
+
 app.listen(3000, () => {
   console.log("server Listening on port 3000!");
 });
 
 
 app.use("/api/user",userRoutes)
+app.use("/api/auth",authRoutes)
