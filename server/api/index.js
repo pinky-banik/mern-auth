@@ -10,7 +10,7 @@ dotenv.config()
 
 
 
-mongoose.connect('mongodb+srv://auth-app:5737AAgZSGk4E9ly@auth-app.golktir.mongodb.net/auth-app?retryWrites=true&w=majority')
+mongoose.connect(process.env.MONGO)
     .then(() => {
     console.log("connected to database");
       })
